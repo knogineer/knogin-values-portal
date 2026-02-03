@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://values.knogin.com/sitemap.xml
+

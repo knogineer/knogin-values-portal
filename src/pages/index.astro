@@ -1,0 +1,345 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { content } from '../content/values-and-behaviours';
+
+const pageTitle = `${content.site.name} - ${content.site.portalName}`;
+---
+
+<BaseLayout title={pageTitle} description={content.site.description} canonicalPath="/">
+	<section class="relative overflow-hidden rounded-3xl border border-[var(--card-border)] bg-[var(--card)] p-8 md:p-12 shadow-sm">
+		<div class="absolute inset-0 pointer-events-none">
+			<div class="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-[color-mix(in_oklab,var(--color-primary),transparent_82%)] blur-2xl"></div>
+			<div class="absolute -bottom-28 -right-24 h-80 w-80 rounded-full bg-[color-mix(in_oklab,var(--color-product-accent),transparent_82%)] blur-2xl"></div>
+		</div>
+
+		<div class="relative">
+			<p class="inline-flex items-center gap-2 rounded-full border border-[var(--card-border)] bg-[color-mix(in_oklab,var(--color-primary),transparent_92%)] px-4 py-2 text-sm font-semibold text-[var(--fg)]">
+				<span class="h-2 w-2 rounded-full bg-[var(--color-primary)]" aria-hidden="true"></span>
+				{content.site.portalName}
+			</p>
+
+			<h1 class="mt-6 text-4xl md:text-6xl font-black tracking-tight text-[var(--fg)]">
+				What great looks like when the stakes are high
+			</h1>
+			<p class="mt-5 max-w-2xl text-lg md:text-xl text-[var(--muted)] leading-relaxed">
+				{content.site.description}
+			</p>
+
+			<div class="mt-8 flex flex-col sm:flex-row gap-3">
+				<a class="btn btn-primary" href={content.site.primaryCtaInternal.href} data-audience-section="internal">
+					{content.site.primaryCtaInternal.label}
+				</a>
+				<a class="btn btn-primary" href={content.site.primaryCtaExternal.href} data-audience-section="external">
+					{content.site.primaryCtaExternal.label}
+				</a>
+				<a class="btn btn-secondary" href={content.site.secondaryCta.href}>
+					{content.site.secondaryCta.label}
+				</a>
+			</div>
+
+			<div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+				<div class="rounded-2xl border border-[var(--card-border)] bg-[color-mix(in_oklab,var(--color-primary),transparent_94%)] p-5">
+					<p class="font-semibold text-[var(--fg)]">Built for reality</p>
+					<p class="mt-1 text-[var(--muted)]">Designed for PSAPs, ECCs, RTCCs, and security command centers.</p>
+				</div>
+				<div class="rounded-2xl border border-[var(--card-border)] bg-[color-mix(in_oklab,var(--color-product-accent),transparent_94%)] p-5">
+					<p class="font-semibold text-[var(--fg)]">Defensible outputs</p>
+					<p class="mt-1 text-[var(--muted)]">Clear provenance, audit trails, and secure-by-default decisions.</p>
+				</div>
+				<div class="rounded-2xl border border-[var(--card-border)] bg-[color-mix(in_oklab,var(--fg),transparent_96%)] p-5">
+					<p class="font-semibold text-[var(--fg)]">Role-agnostic expectations</p>
+					<p class="mt-1 text-[var(--muted)]">A single framework across developers, analysts, and operators.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="mt-14 md:mt-20 grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10">
+		<nav class="lg:sticky lg:top-24 h-fit" aria-label="On this page">
+			<div class="rounded-2xl border border-[var(--card-border)] bg-[var(--card)] p-6 shadow-sm">
+				<p class="text-sm font-semibold text-[var(--fg)]">On this page</p>
+				<ol class="mt-4 space-y-2" data-audience-section="internal">
+					<li><a class="nav-link w-full" href="#values">Values</a></li>
+					<li><a class="nav-link w-full" href="#role-expectations">Role expectations</a></li>
+					<li><a class="nav-link w-full" href="#role-families">Knogin roles</a></li>
+				</ol>
+				<ol class="mt-4 space-y-2" data-audience-section="external">
+					<li><a class="nav-link w-full" href="#values">Values</a></li>
+					<li><a class="nav-link w-full" href="#operational-roles">Operational roles</a></li>
+				</ol>
+
+				<div class="mt-6 rounded-xl border border-[var(--card-border)] bg-[color-mix(in_oklab,var(--fg),transparent_96%)] p-4">
+					<p class="text-sm font-semibold text-[var(--fg)]">How to use this</p>
+					<ul class="mt-3 space-y-2 text-sm text-[var(--muted)]">
+						<li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" aria-hidden="true"></span><span>Use it as a shared vocabulary for outcomes and behaviours.</span></li>
+						<li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" aria-hidden="true"></span><span>Apply it across roles: engineering, operations, intelligence, and security.</span></li>
+						<li class="flex gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" aria-hidden="true"></span><span>When unsure, default to security, evidence integrity, and clarity.</span></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="min-w-0">
+			<section id="values" class="scroll-mt-24">
+				<h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--fg)]">
+					Values (and the behaviours that prove them)
+				</h2>
+				<p class="mt-3 max-w-3xl text-[var(--muted)] leading-relaxed">
+					Values only matter when they show up in decisions, delivery, and day-to-day habits.
+				</p>
+
+				<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5">
+					{content.values.map((v) => (
+						<article class="rounded-2xl border border-[var(--card-border)] bg-[var(--card)] p-6 shadow-sm" aria-labelledby={`${v.id}-title`}>
+							<h3 id={`${v.id}-title`} class="text-lg font-bold text-[var(--fg)]">{v.title}</h3>
+							<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">{v.description}</p>
+							<ul class="mt-5 space-y-2 text-sm text-[var(--muted)]">
+								{v.behaviours.map((b) => (
+									<li class="flex gap-2">
+										<span class="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" aria-hidden="true"></span>
+										<span>{b}</span>
+									</li>
+								))}
+							</ul>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section id="role-expectations" class="mt-14 md:mt-20 scroll-mt-24" data-audience-section="internal">
+				<h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--fg)]">
+					{content.roleExpectations.title}
+				</h2>
+				<p class="mt-3 max-w-3xl text-[var(--muted)] leading-relaxed">
+					{content.roleExpectations.subtitle}
+				</p>
+				<p class="mt-4 max-w-3xl text-sm text-[var(--muted)]">
+					<span class="font-semibold text-[var(--fg)]">Note:</span> {content.roleExpectations.note}
+				</p>
+
+				<div class="mt-8 space-y-4">
+					{(Object.entries(content.levels) as Array<[string, any]>).map(([levelId, level]) => (
+						<details class="group rounded-2xl border border-[var(--card-border)] bg-[var(--card)] shadow-sm">
+							<summary class="cursor-pointer list-none select-none p-6 flex items-start justify-between gap-6">
+								<div class="min-w-0">
+									<p class="text-sm font-semibold text-[var(--color-primary)]">{level.title}</p>
+									<h3 class="mt-1 text-xl font-extrabold text-[var(--fg)]">{level.tagline}</h3>
+									<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">{level.summary}</p>
+								</div>
+								<span class="mt-2 inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--card-border)] text-[var(--muted)] group-open:rotate-180 transition-transform" aria-hidden="true">
+									<svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+										<path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									</svg>
+								</span>
+							</summary>
+
+							<div class="px-6 pb-6">
+								<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+									{content.dimensions.map((d) => (
+										<section class="rounded-xl border border-[var(--card-border)] bg-[color-mix(in_oklab,var(--fg),transparent_96%)] p-4" aria-label={d.title}>
+											<p class="text-sm font-semibold text-[var(--fg)]">{d.title}</p>
+											<p class="mt-1 text-xs text-[var(--muted)]">{d.hint}</p>
+											<ul class="mt-3 space-y-2 text-sm text-[var(--muted)]">
+												{(level.expectations[d.id] as string[]).map((item) => (
+													<li class="flex gap-2">
+														<span class="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" aria-hidden="true"></span>
+														<span>{item}</span>
+													</li>
+												))}
+											</ul>
+										</section>
+									))}
+								</div>
+							</div>
+						</details>
+					))}
+				</div>
+			</section>
+
+			<section id="operational-roles" class="mt-14 md:mt-20 scroll-mt-24" data-audience-section="external">
+				<h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--fg)]">
+					Operational roles we design for
+				</h2>
+				<p class="mt-3 max-w-3xl text-[var(--muted)] leading-relaxed">
+					PSAPs, ECCs, RTCCs, security command centers, and integration teams all work under pressure. Our services should feel calm, defensible, and trustworthy in the moments that matter.
+				</p>
+
+				<div class="mt-8 space-y-4">
+					{content.operationalRoleFamilies.map((family) => (
+						<details class="group rounded-2xl border border-[var(--card-border)] bg-[var(--card)] shadow-sm">
+							<summary class="cursor-pointer list-none select-none p-6 flex items-start justify-between gap-6">
+								<div class="min-w-0">
+									<h3 class="text-xl font-extrabold text-[var(--fg)]">{family.title}</h3>
+									<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">{family.description}</p>
+								</div>
+								<span class="mt-2 inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--card-border)] text-[var(--muted)] group-open:rotate-180 transition-transform" aria-hidden="true">
+									<svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+										<path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									</svg>
+								</span>
+							</summary>
+
+							<div class="px-6 pb-6">
+								<p class="text-sm text-[var(--muted)] leading-relaxed">
+									<span class="font-semibold text-[var(--fg)]">Note:</span> {family.disclaimer}
+								</p>
+
+								<div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-5">
+									{family.roles.map((r) => (
+										<article class="rounded-2xl border border-[var(--card-border)] bg-[color-mix(in_oklab,var(--fg),transparent_96%)] p-6" aria-labelledby={`${family.id}-${r.id}-title`}>
+											<h4 id={`${family.id}-${r.id}-title`} class="text-lg font-extrabold text-[var(--fg)]">{r.title}</h4>
+											<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">{r.description}</p>
+
+											<div class="mt-5">
+												<p class="text-sm font-semibold text-[var(--fg)]">Accountabilities</p>
+												<ul class="mt-2 space-y-2 text-sm text-[var(--muted)]">
+													{r.accountabilities.map((item) => (
+														<li class="flex gap-2">
+															<span class="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" aria-hidden="true"></span>
+															<span>{item}</span>
+														</li>
+													))}
+												</ul>
+											</div>
+
+											<div class="mt-5">
+												<p class="text-sm font-semibold text-[var(--fg)]">What they need</p>
+												<ul class="mt-2 space-y-2 text-sm text-[var(--muted)]">
+													{r.whatTheyNeed.map((item) => (
+														<li class="flex gap-2">
+															<span class="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-product-accent)]" aria-hidden="true"></span>
+															<span>{item}</span>
+														</li>
+													))}
+												</ul>
+											</div>
+
+											<div class="mt-5">
+												<p class="text-sm font-semibold text-[var(--fg)]">What Knogin provides</p>
+												<ul class="mt-2 space-y-2 text-sm text-[var(--muted)]">
+													{r.whatKnoginProvides.map((item) => (
+														<li class="flex gap-2">
+															<span class="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--fg)]" aria-hidden="true"></span>
+															<span>{item}</span>
+														</li>
+													))}
+												</ul>
+											</div>
+										</article>
+									))}
+								</div>
+
+								<div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-5">
+									<section class="rounded-2xl border border-[var(--card-border)] bg-[var(--card)] p-6">
+										<p class="text-sm font-semibold text-[var(--fg)]">Service lens</p>
+										<ul class="mt-3 space-y-2 text-sm text-[var(--muted)]">
+											{family.serviceLens.map((item) => (
+												<li class="flex gap-2">
+													<span class="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" aria-hidden="true"></span>
+													<span>{item}</span>
+												</li>
+											))}
+										</ul>
+									</section>
+
+									{family.relatedServices?.length ? (
+										<section class="rounded-2xl border border-[var(--card-border)] bg-[var(--card)] p-6">
+											<p class="text-sm font-semibold text-[var(--fg)]">Related services</p>
+											<ul class="mt-3 space-y-2 text-sm">
+												{family.relatedServices.map((svc) => (
+													<li>
+														<a class="footer-link" href={svc.href} target="_blank" rel="noopener noreferrer">
+															{svc.label}
+														</a>
+													</li>
+												))}
+											</ul>
+										</section>
+									) : null}
+								</div>
+							</div>
+						</details>
+					))}
+				</div>
+			</section>
+
+			<section id="role-families" class="mt-14 md:mt-20 scroll-mt-24" data-audience-section="internal">
+				<h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-[var(--fg)]">
+					Knogin role families
+				</h2>
+				<p class="mt-3 max-w-3xl text-[var(--muted)] leading-relaxed">
+					We hire across engineering, intelligence, operations, and trust. These families keep expectations consistent even when the day-to-day work looks very different.
+				</p>
+
+				<div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-5">
+					{content.knoginRoleFamilies.map((rf) => (
+						<article class="rounded-2xl border border-[var(--card-border)] bg-[var(--card)] p-6 shadow-sm" aria-labelledby={`${rf.id}-title`}>
+							<h3 id={`${rf.id}-title`} class="text-xl font-extrabold text-[var(--fg)]">{rf.title}</h3>
+							<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">{rf.description}</p>
+
+							<div class="mt-5">
+								<p class="text-sm font-semibold text-[var(--fg)]">Examples</p>
+								<ul class="mt-2 space-y-2 text-sm text-[var(--muted)]">
+									{rf.examples.map((item) => (
+										<li class="flex gap-2">
+											<span class="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]" aria-hidden="true"></span>
+											<span>{item}</span>
+										</li>
+									))}
+								</ul>
+							</div>
+
+							<div class="mt-5">
+								<p class="text-sm font-semibold text-[var(--fg)]">Service lens</p>
+								<ul class="mt-2 space-y-2 text-sm text-[var(--muted)]">
+									{rf.serviceLens.map((item) => (
+										<li class="flex gap-2">
+											<span class="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-product-accent)]" aria-hidden="true"></span>
+											<span>{item}</span>
+										</li>
+									))}
+								</ul>
+							</div>
+
+							<details class="mt-6 rounded-xl border border-[var(--card-border)] bg-[color-mix(in_oklab,var(--fg),transparent_96%)]">
+								<summary class="cursor-pointer list-none select-none p-4 flex items-center justify-between gap-4">
+									<span class="text-sm font-semibold text-[var(--fg)]">Typical titles by level</span>
+									<span class="text-[var(--muted)]" aria-hidden="true">
+										<svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+											<path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										</svg>
+									</span>
+								</summary>
+								<div class="px-4 pb-4 space-y-3 text-sm text-[var(--muted)]">
+									{Object.entries(rf.typicalTitlesByLevel).map(([lvl, titles]) => (
+										<div class="flex flex-col sm:flex-row sm:items-start gap-2">
+											<p class="min-w-28 font-semibold text-[var(--fg)]">{lvl.toUpperCase()}</p>
+											<p>{(titles as string[]).join(' | ')}</p>
+										</div>
+									))}
+								</div>
+							</details>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section class="mt-14 md:mt-20">
+				<div class="rounded-3xl border border-[var(--card-border)] bg-[linear-gradient(135deg,color-mix(in_oklab,var(--knogin-blue),transparent_82%),color-mix(in_oklab,var(--knogin-dark),transparent_84%))] p-8 md:p-10">
+					<h2 class="text-2xl md:text-3xl font-extrabold text-[var(--fg)]">Want to talk about your mission?</h2>
+					<p class="mt-3 max-w-2xl text-[var(--muted)] leading-relaxed">
+						If your teams span software delivery, emergency communications, security operations, and real-time intelligence, we can help you unify workflows without compromising trust.
+					</p>
+					<div class="mt-6 flex flex-col sm:flex-row gap-3">
+						<a class="btn btn-dark" href="https://knogin.com/en/demo" target="_blank" rel="noopener noreferrer">
+							Request a demo
+						</a>
+						<a class="btn btn-hero-secondary" href="https://knogin.com/en" target="_blank" rel="noopener noreferrer">
+							Back to knogin.com
+						</a>
+					</div>
+				</div>
+			</section>
+		</div>
+	</section>
+</BaseLayout>

@@ -1,0 +1,228 @@
+@import "./fonts.css";
+@import "./tokens.css";
+@import "tailwindcss";
+
+/*
+ * Site-level aliases for the shared Knogin design tokens.
+ * Keep markup simple (`var(--bg)`, `var(--fg)`) while allowing theme switching
+ * via `data-theme` from the shared tokens file.
+ */
+:root {
+  --knogin-blue: var(--colors-knogin-blue);
+  --knogin-dark: var(--colors-knogin-dark-blue);
+
+  --bg: var(--color-background);
+  --fg: var(--color-foreground);
+  --muted: var(--color-foreground-muted);
+
+  --card: var(--color-surface-card);
+  --card-border: var(--color-border);
+
+  --focus: var(--color-focus-ring);
+}
+
+/* Audience gating (internal vs operational) */
+:root[data-audience='internal'] [data-audience-section='external'] {
+  display: none !important;
+}
+
+:root[data-audience='external'] [data-audience-section='internal'] {
+  display: none !important;
+}
+
+/* Theme gating (logo / assets) */
+:root[data-theme='light'] [data-theme-section='dark'] {
+  display: none !important;
+}
+
+:root[data-theme='dark'] [data-theme-section='light'],
+:root[data-theme='high-contrast'] [data-theme-section='light'] {
+  display: none !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--typography-font-family-primary);
+  background:
+    radial-gradient(1200px 700px at 15% -10%, color-mix(in oklab, var(--knogin-blue), transparent 86%), transparent 70%),
+    radial-gradient(900px 600px at 90% 10%, color-mix(in oklab, var(--knogin-dark), transparent 86%), transparent 65%),
+    linear-gradient(180deg, var(--bg), color-mix(in oklab, var(--bg), var(--color-surface-elevated) 30%));
+}
+
+:root[data-theme='high-contrast'] body {
+  /* Avoid decorative gradients in high-contrast mode. */
+  background: var(--bg);
+}
+
+:where(h1, h2, h3, h4, h5, h6, .font-brand) {
+  font-family: var(--typography-font-family-brand);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Accessibility */
+:where(a, button, summary, input, select, textarea):focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.btn,
+.nav-link,
+.audience-btn,
+.skip-link,
+summary {
+  min-height: var(--a11y-min-touch-target);
+}
+
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  transform: translateY(-200%);
+  background: var(--card);
+  color: var(--fg);
+  border: 1px solid var(--card-border);
+  border-radius: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  z-index: 50;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.brand-mark {
+  width: 0.95rem;
+  height: 0.95rem;
+  border-radius: 0.35rem;
+  background: linear-gradient(135deg, var(--knogin-blue), var(--knogin-dark));
+  box-shadow: 0 10px 22px -14px color-mix(in oklab, var(--knogin-dark), transparent 30%);
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.nav-link:hover {
+  color: var(--fg);
+  background: color-mix(in oklab, var(--fg), transparent 94%);
+}
+
+.audience-toggle {
+  border: 1px solid var(--card-border);
+  border-radius: 9999px;
+  padding: 0.2rem;
+  background: var(--color-surface-elevated);
+}
+
+.audience-btn {
+  border-radius: 9999px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--muted);
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.audience-btn:hover {
+  color: var(--fg);
+}
+
+:root[data-audience='internal'] .audience-btn[data-audience-set='internal'],
+:root[data-audience='external'] .audience-btn[data-audience-set='external'] {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: 1px solid var(--btn-primary-border);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.55rem 0.9rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: transform 150ms ease, background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 1px solid var(--btn-secondary-border);
+}
+
+.btn-secondary:hover {
+  background: var(--btn-secondary-hover-bg);
+  color: var(--btn-secondary-hover-text);
+  border-color: var(--btn-secondary-hover-border);
+}
+
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: 1px solid var(--btn-primary-border);
+}
+
+.btn-primary:hover {
+  background: var(--btn-primary-hover-bg);
+  color: var(--btn-primary-hover-text);
+  border-color: var(--btn-primary-hover-border);
+}
+
+.btn-dark {
+  background: var(--btn-hero-primary-bg);
+  color: var(--btn-hero-primary-text);
+  border: 1px solid var(--btn-hero-primary-border);
+}
+
+.btn-dark:hover {
+  background: var(--btn-hero-primary-hover-bg);
+  color: var(--btn-hero-primary-hover-text);
+  border-color: var(--btn-hero-primary-hover-border);
+}
+
+.btn-hero-secondary {
+  background: var(--btn-hero-secondary-bg);
+  color: var(--btn-hero-secondary-text);
+  border: 1px solid var(--btn-hero-secondary-border);
+}
+
+.btn-hero-secondary:hover {
+  background: var(--btn-hero-secondary-hover-bg);
+  color: var(--btn-hero-secondary-hover-text);
+  border-color: var(--btn-hero-secondary-hover-border);
+}
+
+.footer-link {
+  color: var(--color-link, var(--muted));
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: var(--color-link-hover, var(--fg));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

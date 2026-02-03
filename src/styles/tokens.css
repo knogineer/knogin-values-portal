@@ -1,0 +1,492 @@
+/**
+ * Knogin Design System Tokens
+ * Based on official Knogin Branding Guidelines
+ * WCAG 2.2 AAA Compliant
+ */
+
+:root {
+  /* ========================================
+   * BRAND COLORS
+   * ======================================== */
+  --colors-knogin-blue: #2674BC;
+  --colors-knogin-dark-blue: #2d3b64;
+
+  /* ========================================
+   * SLATE COLOR SCALE
+   * ======================================== */
+  --colors-slate-50: #f8fafc;
+  --colors-slate-100: #f1f5f9;
+  --colors-slate-200: #e2e8f0;
+  --colors-slate-300: #cbd5e1;
+  --colors-slate-400: #94a3b8;
+  --colors-slate-500: #64748b;
+  --colors-slate-600: #475569;
+  --colors-slate-700: #334155;
+  --colors-slate-800: #1e293b;
+  --colors-slate-900: #0f172a;
+
+  /* ========================================
+   * ACCENT COLORS
+   * ======================================== */
+  --colors-blue-400: #60a5fa;
+  --colors-blue-500: #3b82f6;
+  --colors-green-500: #22c55e;
+  --colors-green-600: #16a34a;
+  --colors-yellow-500: #eab308;
+  --colors-yellow-600: #ca8a04;
+  --colors-red-500: #ef4444;
+  --colors-red-600: #dc2626;
+  --colors-white: #ffffff;
+  --colors-black: #000000;
+
+  /* ========================================
+   * TYPOGRAPHY
+   * ======================================== */
+  --typography-font-family-primary: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --typography-font-family-brand: Manrope, 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --typography-font-family-mono: 'JetBrains Mono', Consolas, Monaco, 'Liberation Mono', 'Lucida Console', monospace;
+  --typography-font-family-accessibility: OpenDyslexic, 'Nunito Sans', sans-serif;
+
+  /* Font Weights */
+  --typography-font-weight-light: 300;
+  --typography-font-weight-regular: 400;
+  --typography-font-weight-semibold: 600;
+  --typography-font-weight-bold: 700;
+  --typography-font-weight-extrabold: 800;
+  --typography-font-weight-black: 900;
+
+  /* Font Sizes */
+  --typography-font-size-xs: 0.75rem;
+  --typography-font-size-sm: 0.875rem;
+  --typography-font-size-base: 1rem;
+  --typography-font-size-lg: 1.125rem;
+  --typography-font-size-xl: 1.25rem;
+  --typography-font-size-2xl: 1.5rem;
+  --typography-font-size-3xl: 1.875rem;
+  --typography-font-size-4xl: 2.25rem;
+  --typography-font-size-5xl: 3rem;
+
+  /* Line Heights */
+  --typography-line-height-tight: 1.25;
+  --typography-line-height-normal: 1.5;
+  --typography-line-height-loose: 1.75;
+
+  /* Letter Spacing */
+  --typography-letter-spacing-tight: -0.05em;
+  --typography-letter-spacing-normal: 0em;
+  --typography-letter-spacing-wide: 0.05em;
+
+  /* ========================================
+   * SPACING (8px Grid System)
+   * ======================================== */
+  --spacing-0: 0px;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+
+  /* ========================================
+   * LAYOUT
+   * ======================================== */
+  --layout-container-max-width: 1280px;
+  --layout-container-padding: 1.5rem;
+  --layout-grid-gap-default: 2rem;
+  --layout-grid-gap-compact: 1rem;
+
+  /* ========================================
+   * BORDER RADIUS
+   * ======================================== */
+  --border-radius-none: 0px;
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --border-radius-xl: 1rem;
+  --border-radius-full: 9999px;
+
+  /* ========================================
+   * SHADOWS
+   * ======================================== */
+  --shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0px 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0px 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+  /* ========================================
+   * ANIMATIONS
+   * ======================================== */
+  --animation-duration-fast: 150ms;
+  --animation-duration-normal: 300ms;
+  --animation-duration-slow: 500ms;
+
+  /* ========================================
+   * ACCESSIBILITY
+   * ======================================== */
+  --a11y-focus-ring-width: 2px;
+  --a11y-focus-ring-offset: 2px;
+  --a11y-min-touch-target: 44px;
+
+  /* ========================================
+   * ZOOM LEVELS
+   * ======================================== */
+  --zoom-level: 1;
+}
+
+/* ============================================
+ * LIGHT THEME (Default)
+ * ============================================ */
+:root,
+[data-theme='light'] {
+  --color-background: var(--colors-white);
+  --color-foreground: var(--colors-slate-900);
+  --color-foreground-muted: var(--colors-slate-700);
+  --color-foreground-subtle: var(--colors-slate-600);
+
+  --color-surface: var(--colors-white);
+  --color-surface-elevated: var(--colors-slate-100);
+  --color-surface-card: var(--colors-white);
+
+  --color-border: var(--colors-slate-200);
+  --color-border-muted: var(--colors-slate-100);
+
+  --color-primary: #1a47a0;
+  --color-primary-hover: #0d3a8e;
+  --color-primary-foreground: var(--colors-white);
+
+  --color-secondary: var(--colors-knogin-dark-blue);
+  --color-secondary-hover: #1e2a4a;
+  --color-secondary-foreground: var(--colors-white);
+
+  --color-input-background: var(--colors-white);
+  --color-input-border: var(--colors-slate-300);
+  --color-input-placeholder: var(--colors-slate-500);
+
+  --color-focus-ring: #0d3a8e;
+
+  /* Button variants for light theme - darker blue for AAA contrast (7:1+) */
+  --btn-primary-bg: #1a47a0;
+  --btn-primary-text: var(--colors-white);
+  --btn-primary-border: #1a47a0;
+  --btn-primary-hover-bg: #0d3a8e;
+  --btn-primary-hover-text: var(--colors-white);
+  --btn-primary-hover-border: #0d3a8e;
+
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: #1a47a0;
+  --btn-secondary-border: #1a47a0;
+  --btn-secondary-hover-bg: #1a47a0;
+  --btn-secondary-hover-text: var(--colors-white);
+  --btn-secondary-hover-border: #1a47a0;
+
+  /* Hero section buttons (on dark background) */
+  --btn-hero-primary-bg: var(--colors-white);
+  --btn-hero-primary-text: #1a47a0;
+  --btn-hero-primary-border: var(--colors-white);
+  --btn-hero-primary-hover-bg: #f1f5f9;
+  --btn-hero-primary-hover-text: #0d3a8e;
+  --btn-hero-primary-hover-border: #f1f5f9;
+
+  --btn-hero-secondary-bg: transparent;
+  --btn-hero-secondary-text: var(--colors-white);
+  --btn-hero-secondary-border: var(--colors-white);
+  --btn-hero-secondary-hover-bg: rgba(255, 255, 255, 0.2);
+  --btn-hero-secondary-hover-text: var(--colors-white);
+  --btn-hero-secondary-hover-border: var(--colors-white);
+
+  /* ========================================
+   * ANIMATION COLORS (for canvas/particle animations)
+   * Hero sections have dark backgrounds, so use white/light particles
+   * ======================================== */
+  --color-animation-particle: rgba(255, 255, 255, 0.8);
+  --color-animation-line: 255, 255, 255;
+  --color-animation-line-opacity: 0.3;
+
+  /* ========================================
+   * PRODUCT PAGE ACCENT COLORS
+   * Used for badges, highlights, interactive elements on product pages
+   * ======================================== */
+  --color-product-accent: #0891b2;
+  --color-product-accent-hover: #06b6d4;
+  --color-product-accent-bg: rgba(8, 145, 178, 0.1);
+  --color-product-accent-bg-hover: rgba(8, 145, 178, 0.2);
+  --color-product-accent-border: rgba(8, 145, 178, 0.3);
+  --color-product-accent-text: #0891b2;
+
+  /* ========================================
+   * HERO SECTION BACKGROUNDS
+   * Consistent gradient colors for hero sections
+   * ======================================== */
+  --color-hero-bg-from: #0A2647;
+  --color-hero-bg-via: #134074;
+  --color-hero-bg-to: #061830;
+}
+
+/* ============================================
+ * DARK THEME
+ * ============================================ */
+[data-theme='dark'] {
+  --color-background: var(--colors-slate-900);
+  --color-foreground: var(--colors-slate-100);
+  --color-foreground-muted: var(--colors-slate-300);
+  --color-foreground-subtle: var(--colors-slate-400);
+
+  --color-surface: var(--colors-slate-900);
+  --color-surface-elevated: var(--colors-slate-800);
+  --color-surface-card: var(--colors-slate-800);
+
+  --color-border: var(--colors-slate-700);
+  --color-border-muted: var(--colors-slate-800);
+
+  --color-primary: #60a5fa;
+  --color-primary-hover: #93c5fd;
+  --color-primary-foreground: var(--colors-slate-900);
+
+  --color-secondary: var(--colors-slate-600);
+  --color-secondary-hover: var(--colors-slate-500);
+  --color-secondary-foreground: var(--colors-white);
+
+  --color-input-background: var(--colors-slate-800);
+  --color-input-border: var(--colors-slate-600);
+  --color-input-placeholder: var(--colors-slate-500);
+
+  --color-focus-ring: var(--colors-blue-400);
+
+  /* Button variants for dark theme */
+  --btn-primary-bg: #60a5fa;
+  --btn-primary-text: #0f172a;
+  --btn-primary-border: #60a5fa;
+  --btn-primary-hover-bg: #93c5fd;
+  --btn-primary-hover-text: #0f172a;
+  --btn-primary-hover-border: #93c5fd;
+
+  --btn-secondary-bg: transparent;
+  --btn-secondary-text: #60a5fa;
+  --btn-secondary-border: #60a5fa;
+  --btn-secondary-hover-bg: #60a5fa;
+  --btn-secondary-hover-text: #0f172a;
+  --btn-secondary-hover-border: #60a5fa;
+
+  /* Hero section buttons (on dark background) */
+  --btn-hero-primary-bg: var(--colors-white);
+  --btn-hero-primary-text: #1e293b;
+  --btn-hero-primary-border: var(--colors-white);
+  --btn-hero-primary-hover-bg: #e2e8f0;
+  --btn-hero-primary-hover-text: #0f172a;
+  --btn-hero-primary-hover-border: #e2e8f0;
+
+  --btn-hero-secondary-bg: transparent;
+  --btn-hero-secondary-text: var(--colors-white);
+  --btn-hero-secondary-border: var(--colors-white);
+  --btn-hero-secondary-hover-bg: rgba(255, 255, 255, 0.2);
+  --btn-hero-secondary-hover-text: var(--colors-white);
+  --btn-hero-secondary-hover-border: var(--colors-white);
+
+  /* ========================================
+   * ANIMATION COLORS (for canvas/particle animations)
+   * Same as light theme - hero sections maintain dark backgrounds
+   * ======================================== */
+  --color-animation-particle: rgba(255, 255, 255, 0.8);
+  --color-animation-line: 255, 255, 255;
+  --color-animation-line-opacity: 0.3;
+
+  /* ========================================
+   * PRODUCT PAGE ACCENT COLORS
+   * Brighter cyan for better visibility in dark theme
+   * ======================================== */
+  --color-product-accent: #22d3ee;
+  --color-product-accent-hover: #67e8f9;
+  --color-product-accent-bg: rgba(34, 211, 238, 0.15);
+  --color-product-accent-bg-hover: rgba(34, 211, 238, 0.25);
+  --color-product-accent-border: rgba(34, 211, 238, 0.4);
+  --color-product-accent-text: #22d3ee;
+
+  /* ========================================
+   * HERO SECTION BACKGROUNDS
+   * Slightly adjusted for dark theme
+   * ======================================== */
+  --color-hero-bg-from: var(--colors-slate-900);
+  --color-hero-bg-via: #0A2647;
+  --color-hero-bg-to: var(--colors-slate-900);
+}
+
+/* ============================================
+ * HIGH CONTRAST THEME (WCAG AAA)
+ * ============================================ */
+[data-theme='high-contrast'] {
+  --color-background: var(--colors-black);
+  --color-foreground: var(--colors-white);
+  --color-foreground-muted: var(--colors-white);
+  --color-foreground-subtle: var(--colors-white);
+
+  --color-surface: var(--colors-black);
+  --color-surface-elevated: var(--colors-black);
+  --color-surface-card: var(--colors-black);
+
+  --color-border: var(--colors-white);
+  --color-border-muted: var(--colors-white);
+
+  --color-primary: #00bfff;
+  --color-primary-hover: #00e5ff;
+  --color-primary-foreground: var(--colors-black);
+
+  --color-secondary: #ffff00;
+  --color-secondary-hover: #ffff66;
+  --color-secondary-foreground: var(--colors-black);
+
+  --color-input-background: var(--colors-black);
+  --color-input-border: var(--colors-white);
+  --color-input-placeholder: #b0b0b0;
+
+  --color-focus-ring: #ffff00;
+
+  /* High contrast link colors - cyan for dark backgrounds, dark blue for light backgrounds */
+  --color-link: #0099ff;
+  --color-link-hover: #00ccff;
+  --color-link-visited: #cc66ff;
+
+  /* High contrast success/warning/error */
+  --color-success: #00ff00;
+  --color-warning: #ffff00;
+  --color-error: #ff0000;
+
+  /* Button variants for high contrast - bright yellow/cyan for maximum visibility */
+  --btn-primary-bg: #ffff00;
+  --btn-primary-text: var(--colors-black);
+  --btn-primary-border: #ffff00;
+  --btn-primary-hover-bg: #ffff66;
+  --btn-primary-hover-text: var(--colors-black);
+  --btn-primary-hover-border: #ffff66;
+
+  --btn-secondary-bg: var(--colors-black);
+  --btn-secondary-text: #00ffff;
+  --btn-secondary-border: #00ffff;
+  --btn-secondary-hover-bg: #00ffff;
+  --btn-secondary-hover-text: var(--colors-black);
+  --btn-secondary-hover-border: #00ffff;
+
+  /* Hero section buttons (on black background) - use bright colors for maximum visibility */
+  --btn-hero-primary-bg: #ffff00;
+  --btn-hero-primary-text: var(--colors-black);
+  --btn-hero-primary-border: #ffff00;
+  --btn-hero-primary-hover-bg: #ffff66;
+  --btn-hero-primary-hover-text: var(--colors-black);
+  --btn-hero-primary-hover-border: #ffff66;
+
+  --btn-hero-secondary-bg: var(--colors-black);
+  --btn-hero-secondary-text: #00ffff;
+  --btn-hero-secondary-border: #00ffff;
+  --btn-hero-secondary-hover-bg: #00ffff;
+  --btn-hero-secondary-hover-text: var(--colors-black);
+  --btn-hero-secondary-hover-border: #00ffff;
+
+  /* ========================================
+   * ANIMATION COLORS (for canvas/particle animations)
+   * Yellow particles for maximum visibility on black background
+   * ======================================== */
+  --color-animation-particle: #FFFF00;
+  --color-animation-line: 255, 255, 0;
+  --color-animation-line-opacity: 0.8;
+
+  /* ========================================
+   * PRODUCT PAGE ACCENT COLORS
+   * Bright cyan for maximum contrast on black background
+   * ======================================== */
+  --color-product-accent: #00ffff;
+  --color-product-accent-hover: #ffff00;
+  --color-product-accent-bg: transparent;
+  --color-product-accent-bg-hover: rgba(0, 255, 255, 0.2);
+  --color-product-accent-border: #00ffff;
+  --color-product-accent-text: #00ffff;
+
+  /* ========================================
+   * HERO SECTION BACKGROUNDS
+   * Pure black for maximum contrast
+   * ======================================== */
+  --color-hero-bg-from: var(--colors-black);
+  --color-hero-bg-via: var(--colors-black);
+  --color-hero-bg-to: var(--colors-black);
+}
+
+/* ============================================
+ * ACCESSIBILITY: OpenDyslexic Font Override
+ * ============================================ */
+[data-font='dyslexic'] {
+  --typography-font-family-primary: OpenDyslexic, 'Nunito Sans', sans-serif;
+  --typography-font-family-brand: OpenDyslexic, 'Nunito Sans', sans-serif;
+}
+
+[data-font='dyslexic'] body,
+[data-font='dyslexic'] h1,
+[data-font='dyslexic'] h2,
+[data-font='dyslexic'] h3,
+[data-font='dyslexic'] h4,
+[data-font='dyslexic'] h5,
+[data-font='dyslexic'] h6,
+[data-font='dyslexic'] button,
+[data-font='dyslexic'] input,
+[data-font='dyslexic'] select,
+[data-font='dyslexic'] textarea,
+[data-font='dyslexic'] .font-brand,
+[data-font='dyslexic'] [class*="font-brand"] {
+  font-family: OpenDyslexic, 'Nunito Sans', sans-serif !important;
+}
+
+/* ============================================
+ * ACCESSIBILITY: Zoom Levels
+ * ============================================ */
+[data-zoom='small'] {
+  --zoom-level: 0.875;
+  font-size: 87.5%;
+}
+
+[data-zoom='medium'] {
+  --zoom-level: 1;
+  font-size: 100%;
+}
+
+[data-zoom='large'] {
+  --zoom-level: 1.125;
+  font-size: 112.5%;
+}
+
+[data-zoom='extra-large'] {
+  --zoom-level: 1.25;
+  font-size: 125%;
+}
+
+/* ============================================
+ * ACCESSIBILITY: Line Height for Readability
+ * ============================================ */
+[data-line-height='normal'] {
+  --typography-line-height-normal: 1.5;
+}
+
+[data-line-height='relaxed'] {
+  --typography-line-height-normal: 1.75;
+}
+
+[data-line-height='loose'] {
+  --typography-line-height-normal: 2;
+}
+
+/* ============================================
+ * ACCESSIBILITY: Letter Spacing
+ * ============================================ */
+[data-letter-spacing='normal'] {
+  letter-spacing: 0;
+}
+
+[data-letter-spacing='wide'] {
+  letter-spacing: 0.05em;
+}
+
+[data-letter-spacing='wider'] {
+  letter-spacing: 0.1em;
+}

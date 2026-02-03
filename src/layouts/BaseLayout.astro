@@ -1,0 +1,531 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  readonly title: string;
+  readonly description: string;
+  readonly canonicalPath?: string;
+}
+
+const { title, description, canonicalPath } = Astro.props;
+
+const canonicalUrl = canonicalPath
+  ? new URL(canonicalPath, Astro.site ?? 'https://values.knogin.com').toString()
+  : undefined;
+---
+
+<!doctype html>
+<html
+  lang="en"
+  data-audience="internal"
+  data-theme="light"
+  data-font="default"
+  data-zoom="medium"
+  data-line-height="normal"
+  data-letter-spacing="normal"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="light dark" />
+    {canonicalUrl ? <link rel="canonical" href={canonicalUrl} /> : null}
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {canonicalUrl ? <meta property="og:url" content={canonicalUrl} /> : null}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <title>{title}</title>
+
+    <script is:inline>
+      (function () {
+        try {
+          var root = globalThis.document && globalThis.document.documentElement;
+          if (!root) return;
+
+          var params = new URLSearchParams(globalThis.location ? globalThis.location.search : '');
+
+          function pickFrom(value, allowed, fallback) {
+            if (!value) return fallback;
+            for (var i = 0; i < allowed.length; i++) {
+              if (value === allowed[i]) return value;
+            }
+            return fallback;
+          }
+
+          function readStorage(key) {
+            try {
+              return globalThis.localStorage ? globalThis.localStorage.getItem(key) : null;
+            } catch (e) {
+              return null;
+            }
+          }
+
+          var allowedAudiences = ['internal', 'external'];
+          var allowedThemes = ['light', 'dark', 'high-contrast'];
+          var allowedFonts = ['default', 'dyslexic'];
+          var allowedZoom = ['small', 'medium', 'large', 'extra-large'];
+          var allowedLineHeight = ['normal', 'relaxed', 'loose'];
+          var allowedLetterSpacing = ['normal', 'wide', 'wider'];
+
+          var audience = pickFrom(params.get('audience'), allowedAudiences, '');
+          if (!audience) {
+            audience = pickFrom(readStorage('knogin-values-audience'), allowedAudiences, 'internal');
+          }
+
+          var theme = pickFrom(params.get('theme'), allowedThemes, '');
+          if (!theme) theme = pickFrom(readStorage('knogin-values-theme'), allowedThemes, '');
+          if (!theme) {
+            var prefersDark = false;
+            try {
+              prefersDark = !!(
+                globalThis.matchMedia && globalThis.matchMedia('(prefers-color-scheme: dark)').matches
+              );
+            } catch (e) {
+              prefersDark = false;
+            }
+            theme = prefersDark ? 'dark' : 'light';
+          }
+
+          var font = pickFrom(params.get('font'), allowedFonts, '');
+          if (!font) font = pickFrom(readStorage('knogin-values-font'), allowedFonts, 'default');
+
+          var zoom = pickFrom(params.get('zoom'), allowedZoom, '');
+          if (!zoom) zoom = pickFrom(readStorage('knogin-values-zoom'), allowedZoom, 'medium');
+
+          var lineHeight = pickFrom(params.get('lineHeight'), allowedLineHeight, '');
+          if (!lineHeight) {
+            lineHeight = pickFrom(readStorage('knogin-values-line-height'), allowedLineHeight, 'normal');
+          }
+
+          var letterSpacing = pickFrom(params.get('letterSpacing'), allowedLetterSpacing, '');
+          if (!letterSpacing) {
+            letterSpacing = pickFrom(readStorage('knogin-values-letter-spacing'), allowedLetterSpacing, 'normal');
+          }
+
+          root.setAttribute('data-audience', audience);
+          root.setAttribute('data-theme', theme);
+          root.setAttribute('data-font', font);
+          root.setAttribute('data-zoom', zoom);
+          root.setAttribute('data-line-height', lineHeight);
+          root.setAttribute('data-letter-spacing', letterSpacing);
+        } catch (e) {
+          // If storage is blocked, defaults remain in markup.
+        }
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen bg-[var(--bg)] text-[var(--fg)] antialiased">
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+
+    <header class="relative z-50 border-b border-[var(--card-border)] bg-[var(--bg)]/80 backdrop-blur supports-[backdrop-filter]:bg-[var(--bg)]/60">
+      <div class="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between gap-6">
+        <a
+          href="https://knogin.com/en"
+          class="inline-flex items-center gap-3 rounded-md px-2 py-1"
+          aria-label="Knogin home (opens in a new tab)"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            class="h-7 w-auto"
+            src="/assets/images/main.png"
+            width="669"
+            height="183"
+            alt=""
+            aria-hidden="true"
+            data-theme-section="light"
+            decoding="async"
+          />
+          <img
+            class="h-7 w-auto"
+            src="/assets/images/white.png"
+            width="458"
+            height="125"
+            alt=""
+            aria-hidden="true"
+            data-theme-section="dark"
+            decoding="async"
+          />
+          <span class="text-sm font-semibold tracking-tight text-[var(--fg)] hidden sm:inline">
+            Values & Behaviours
+          </span>
+        </a>
+
+        <nav aria-label="Primary" class="hidden md:block">
+          <ul class="flex items-center gap-1">
+            <li><a class="nav-link" href="#values">Values</a></li>
+            <li data-audience-section="internal"><a class="nav-link" href="#role-expectations">Role expectations</a></li>
+            <li data-audience-section="external"><a class="nav-link" href="#operational-roles">Operational roles</a></li>
+            <li data-audience-section="internal"><a class="nav-link" href="#role-families">Knogin roles</a></li>
+          </ul>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <div
+            class="audience-toggle hidden sm:inline-flex"
+            role="group"
+            aria-label="Audience view toggle"
+          >
+            <button
+              type="button"
+              class="audience-btn"
+              data-audience-set="internal"
+              aria-pressed="true"
+            >
+              Knogin
+            </button>
+            <button
+              type="button"
+              class="audience-btn"
+              data-audience-set="external"
+              aria-pressed="false"
+            >
+              Operational
+            </button>
+          </div>
+          <label class="sr-only" for="audience-select">Audience view</label>
+          <select
+            id="audience-select"
+            class="sm:hidden min-h-[var(--a11y-min-touch-target)] rounded-full border border-[var(--card-border)] bg-[var(--card)] px-3 py-2 text-sm font-semibold text-[var(--fg)]"
+            aria-label="Audience view"
+          >
+            <option value="internal">Knogin</option>
+            <option value="external">Operational</option>
+          </select>
+
+          <details class="relative">
+            <summary
+              class="btn btn-secondary cursor-pointer list-none select-none"
+              aria-label="Display and accessibility settings"
+            >
+              Display
+            </summary>
+            <div
+              class="absolute right-0 z-50 mt-2 w-[min(22rem,calc(100vw-2rem))] rounded-2xl border border-[var(--card-border)] bg-[var(--card)] p-4 shadow-lg"
+            >
+              <p class="text-sm font-semibold text-[var(--fg)]">Display</p>
+
+              <div class="mt-3 grid gap-3">
+                <div class="grid gap-1">
+                  <label class="text-xs font-semibold text-[var(--muted)]" for="theme-select">
+                    Theme
+                  </label>
+                  <select
+                    id="theme-select"
+                    class="min-h-[var(--a11y-min-touch-target)] rounded-xl border border-[var(--card-border)] bg-[var(--card)] px-3 py-2 text-sm font-semibold text-[var(--fg)]"
+                  >
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="high-contrast">High contrast</option>
+                  </select>
+                </div>
+
+                <div class="grid gap-1">
+                  <label class="text-xs font-semibold text-[var(--muted)]" for="font-select">
+                    Font
+                  </label>
+                  <select
+                    id="font-select"
+                    class="min-h-[var(--a11y-min-touch-target)] rounded-xl border border-[var(--card-border)] bg-[var(--card)] px-3 py-2 text-sm font-semibold text-[var(--fg)]"
+                  >
+                    <option value="default">Default</option>
+                    <option value="dyslexic">OpenDyslexic</option>
+                  </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="grid gap-1">
+                    <label class="text-xs font-semibold text-[var(--muted)]" for="zoom-select">
+                      Text size
+                    </label>
+                    <select
+                      id="zoom-select"
+                      class="min-h-[var(--a11y-min-touch-target)] rounded-xl border border-[var(--card-border)] bg-[var(--card)] px-3 py-2 text-sm font-semibold text-[var(--fg)]"
+                    >
+                      <option value="small">Small</option>
+                      <option value="medium">Medium</option>
+                      <option value="large">Large</option>
+                      <option value="extra-large">XL</option>
+                    </select>
+                  </div>
+
+                  <div class="grid gap-1">
+                    <label class="text-xs font-semibold text-[var(--muted)]" for="line-height-select">
+                      Line height
+                    </label>
+                    <select
+                      id="line-height-select"
+                      class="min-h-[var(--a11y-min-touch-target)] rounded-xl border border-[var(--card-border)] bg-[var(--card)] px-3 py-2 text-sm font-semibold text-[var(--fg)]"
+                    >
+                      <option value="normal">Normal</option>
+                      <option value="relaxed">Relaxed</option>
+                      <option value="loose">Loose</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="grid gap-1">
+                  <label class="text-xs font-semibold text-[var(--muted)]" for="letter-spacing-select">
+                    Letter spacing
+                  </label>
+                  <select
+                    id="letter-spacing-select"
+                    class="min-h-[var(--a11y-min-touch-target)] rounded-xl border border-[var(--card-border)] bg-[var(--card)] px-3 py-2 text-sm font-semibold text-[var(--fg)]"
+                  >
+                    <option value="normal">Normal</option>
+                    <option value="wide">Wide</option>
+                    <option value="wider">Wider</option>
+                  </select>
+                </div>
+
+                <button id="display-reset" type="button" class="btn btn-secondary w-full">
+                  Reset to defaults
+                </button>
+              </div>
+            </div>
+          </details>
+
+          <a class="btn btn-secondary" href="https://knogin.com/en/contact" target="_blank" rel="noopener noreferrer">
+            Contact
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="mx-auto max-w-7xl px-4 py-10 md:py-14">
+      <slot />
+    </main>
+
+    <footer class="border-t border-[var(--card-border)] bg-[var(--bg)]">
+      <div class="mx-auto max-w-7xl px-4 py-10 text-sm text-[var(--muted)]">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <p>
+            <span class="font-semibold text-[var(--fg)]">Knogin</span>
+            <span> - Values & Behaviours</span>
+          </p>
+          <p class="flex flex-wrap gap-x-4 gap-y-2">
+            <a class="footer-link" href="https://knogin.com/en" target="_blank" rel="noopener noreferrer">knogin.com</a>
+            <a class="footer-link" href="https://knogin.com/en/privacy" target="_blank" rel="noopener noreferrer">Privacy</a>
+            <a class="footer-link" href="https://knogin.com/en/terms" target="_blank" rel="noopener noreferrer">Terms</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script is:inline>
+      (function () {
+        var root = globalThis.document && globalThis.document.documentElement;
+        if (!root) return;
+
+        function pickFrom(value, allowed, fallback) {
+          if (!value) return fallback;
+          for (var i = 0; i < allowed.length; i++) {
+            if (value === allowed[i]) return value;
+          }
+          return fallback;
+        }
+
+        function writeStorage(key, value) {
+          try {
+            if (!globalThis.localStorage) return;
+            globalThis.localStorage.setItem(key, value);
+          } catch (e) {
+            // Ignore if storage is blocked.
+          }
+        }
+
+        function removeStorage(key) {
+          try {
+            if (!globalThis.localStorage) return;
+            globalThis.localStorage.removeItem(key);
+          } catch (e) {
+            // Ignore if storage is blocked.
+          }
+        }
+
+        function updateUrlParam(key, value) {
+          try {
+            if (!globalThis.location || !globalThis.history) return;
+            var url = new URL(globalThis.location.href);
+            url.searchParams.set(key, value);
+            globalThis.history.replaceState({}, '', url.toString());
+          } catch (e) {
+            // Ignore URL errors.
+          }
+        }
+
+        function setRootAttr(attr, value) {
+          if (!value) return;
+          root.setAttribute(attr, value);
+        }
+
+        var allowedAudiences = ['internal', 'external'];
+        var allowedThemes = ['light', 'dark', 'high-contrast'];
+        var allowedFonts = ['default', 'dyslexic'];
+        var allowedZoom = ['small', 'medium', 'large', 'extra-large'];
+        var allowedLineHeight = ['normal', 'relaxed', 'loose'];
+        var allowedLetterSpacing = ['normal', 'wide', 'wider'];
+
+        function setAudience(audience) {
+          var next = pickFrom(audience, allowedAudiences, '');
+          if (!next) return;
+          setRootAttr('data-audience', next);
+          writeStorage('knogin-values-audience', next);
+          updateUrlParam('audience', next);
+        }
+
+        function setTheme(theme) {
+          var next = pickFrom(theme, allowedThemes, '');
+          if (!next) return;
+          setRootAttr('data-theme', next);
+          writeStorage('knogin-values-theme', next);
+          updateUrlParam('theme', next);
+        }
+
+        function setFont(font) {
+          var next = pickFrom(font, allowedFonts, '');
+          if (!next) return;
+          setRootAttr('data-font', next);
+          writeStorage('knogin-values-font', next);
+          updateUrlParam('font', next);
+        }
+
+        function setZoom(zoom) {
+          var next = pickFrom(zoom, allowedZoom, '');
+          if (!next) return;
+          setRootAttr('data-zoom', next);
+          writeStorage('knogin-values-zoom', next);
+          updateUrlParam('zoom', next);
+        }
+
+        function setLineHeight(lineHeight) {
+          var next = pickFrom(lineHeight, allowedLineHeight, '');
+          if (!next) return;
+          setRootAttr('data-line-height', next);
+          writeStorage('knogin-values-line-height', next);
+          updateUrlParam('lineHeight', next);
+        }
+
+        function setLetterSpacing(letterSpacing) {
+          var next = pickFrom(letterSpacing, allowedLetterSpacing, '');
+          if (!next) return;
+          setRootAttr('data-letter-spacing', next);
+          writeStorage('knogin-values-letter-spacing', next);
+          updateUrlParam('letterSpacing', next);
+        }
+
+        function syncControls() {
+          var currentAudience = root.getAttribute('data-audience') || 'internal';
+          var audienceButtons = globalThis.document.querySelectorAll('[data-audience-set]');
+          for (var i = 0; i < audienceButtons.length; i++) {
+            var btn = audienceButtons[i];
+            var val = btn.getAttribute('data-audience-set');
+            btn.setAttribute('aria-pressed', val === currentAudience ? 'true' : 'false');
+          }
+
+          var audienceSelect = globalThis.document.getElementById('audience-select');
+          if (audienceSelect && audienceSelect instanceof HTMLSelectElement) {
+            audienceSelect.value = currentAudience;
+          }
+
+          var themeSelect = globalThis.document.getElementById('theme-select');
+          if (themeSelect && themeSelect instanceof HTMLSelectElement) {
+            themeSelect.value = root.getAttribute('data-theme') || 'light';
+          }
+
+          var fontSelect = globalThis.document.getElementById('font-select');
+          if (fontSelect && fontSelect instanceof HTMLSelectElement) {
+            fontSelect.value = root.getAttribute('data-font') || 'default';
+          }
+
+          var zoomSelect = globalThis.document.getElementById('zoom-select');
+          if (zoomSelect && zoomSelect instanceof HTMLSelectElement) {
+            zoomSelect.value = root.getAttribute('data-zoom') || 'medium';
+          }
+
+          var lineHeightSelect = globalThis.document.getElementById('line-height-select');
+          if (lineHeightSelect && lineHeightSelect instanceof HTMLSelectElement) {
+            lineHeightSelect.value = root.getAttribute('data-line-height') || 'normal';
+          }
+
+          var letterSpacingSelect = globalThis.document.getElementById('letter-spacing-select');
+          if (letterSpacingSelect && letterSpacingSelect instanceof HTMLSelectElement) {
+            letterSpacingSelect.value = root.getAttribute('data-letter-spacing') || 'normal';
+          }
+        }
+
+        globalThis.document.addEventListener('click', function (event) {
+          var target = event.target;
+          if (!target || !(target instanceof Element)) return;
+
+          var audienceBtn = target.closest('[data-audience-set]');
+          if (audienceBtn) {
+            event.preventDefault();
+            setAudience(audienceBtn.getAttribute('data-audience-set'));
+            syncControls();
+            return;
+          }
+        });
+
+        function bindSelect(id, onChange) {
+          var el = globalThis.document.getElementById(id);
+          if (!el || !(el instanceof HTMLSelectElement)) return;
+          el.addEventListener('change', function () {
+            onChange(el.value);
+            syncControls();
+          });
+        }
+
+        bindSelect('audience-select', setAudience);
+        bindSelect('theme-select', setTheme);
+        bindSelect('font-select', setFont);
+        bindSelect('zoom-select', setZoom);
+        bindSelect('line-height-select', setLineHeight);
+        bindSelect('letter-spacing-select', setLetterSpacing);
+
+        var resetBtn = globalThis.document.getElementById('display-reset');
+        if (resetBtn && resetBtn instanceof HTMLButtonElement) {
+          resetBtn.addEventListener('click', function () {
+            removeStorage('knogin-values-theme');
+            removeStorage('knogin-values-font');
+            removeStorage('knogin-values-zoom');
+            removeStorage('knogin-values-line-height');
+            removeStorage('knogin-values-letter-spacing');
+
+            var prefersDark = false;
+            try {
+              prefersDark = !!(
+                globalThis.matchMedia && globalThis.matchMedia('(prefers-color-scheme: dark)').matches
+              );
+            } catch (e) {
+              prefersDark = false;
+            }
+
+            setTheme(prefersDark ? 'dark' : 'light');
+            setFont('default');
+            setZoom('medium');
+            setLineHeight('normal');
+            setLetterSpacing('normal');
+            syncControls();
+          });
+        }
+
+        syncControls();
+      })();
+    </script>
+  </body>
+</html>
