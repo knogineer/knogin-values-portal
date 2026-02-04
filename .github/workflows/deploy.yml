@@ -33,7 +33,7 @@ jobs:
       - name: Deploy
         run: >
           npx wrangler@4.56.0 pages deploy dist
-          --project-name values
+          --project-name knogin-values-portal
           --branch main
           --commit-hash "${{ github.sha }}"
           --commit-message "GitHub Actions deploy: ${{ github.sha }}"
